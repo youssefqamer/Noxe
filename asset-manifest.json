@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Noxe/static/css/main.9979e987.css",
+    "main.js": "/Noxe/static/js/main.10b4af83.js",
+    "static/media/fa-solid-900.ttf": "/Noxe/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
+    "static/media/fa-brands-400.ttf": "/Noxe/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
+    "static/media/fa-solid-900.woff2": "/Noxe/static/media/fa-solid-900.41c0f706d8ce93933771.woff2",
+    "static/media/fa-brands-400.woff2": "/Noxe/static/media/fa-brands-400.3ac6859b28be946745f9.woff2",
+    "static/media/fa-regular-400.ttf": "/Noxe/static/media/fa-regular-400.3cd9fb8fcec4ad0f99d4.ttf",
+    "static/media/0_QOZm9X5er1Y0r5-t.jpg": "/Noxe/static/media/0_QOZm9X5er1Y0r5-t.69e7bbca66247353d58d.jpg",
+    "static/media/fa-regular-400.woff2": "/Noxe/static/media/fa-regular-400.1f3772178d9e5bed38a6.woff2",
+    "static/media/fa-v4compatibility.ttf": "/Noxe/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
+    "static/media/fa-v4compatibility.woff2": "/Noxe/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
+    "index.html": "/Noxe/index.html",
+    "main.9979e987.css.map": "/Noxe/static/css/main.9979e987.css.map",
+    "main.10b4af83.js.map": "/Noxe/static/js/main.10b4af83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9979e987.css",
+    "static/js/main.10b4af83.js"
+  ]
+}
