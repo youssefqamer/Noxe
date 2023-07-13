@@ -71,9 +71,9 @@ export default function Navbar({isLogin,setIsLogin,userName}) {
     return isActive ? "text-info nav-link " : 'nav-link';
   }} to='login'>Logout</NavLink>
         </li></>:""}
-        <li className="nav-item">
+        <li className="nav-item ">
           <NavLink  className={({ isActive}) => {
-    return isActive ? " nav-link " : 'nav-link';
+    return isActive ? " nav-link text-info" : 'nav-link';
   }} >{isLogin?userName:''}</NavLink>
         </li>
       </ul>

@@ -14,7 +14,6 @@ export default function MovieDetails() {
      let getMovieDetails= async(id,media)=>{
       setLoading(true)
         let {data}=await axios.get(`https://api.themoviedb.org/3/${media}/${id}?api_key=b3e706c7ed2ac18bd470888caaece32e&language=en-US`)
-        console.log(data);
         setDetails(data)
         setLoading(false)
     }

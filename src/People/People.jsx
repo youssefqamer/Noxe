@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { mediaContext } from './../Context/Store';
@@ -7,7 +6,6 @@ import { Offline} from "react-detect-offline";
 import Disconnect from '../Disconnect/Disconnect';
 import Loading from './../Loading/Loading';
 export default function People() {
- 
   let {pagination,personContainer,loading}=useContext(mediaContext)
   return (
 <>

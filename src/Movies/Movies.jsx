@@ -7,21 +7,8 @@ import { Offline} from "react-detect-offline";
 import Disconnect from '../Disconnect/Disconnect';
 import Loading from './../Loading/Loading';
 
-
-
-
 export default function Movies() {
-  // let [movieContainer,setMovieContainer]=useState([])
-  // let getData=async(mediaType,setFunc)=>{
-  //   let {data}=await axios.get(`https://api.themoviedb.org/3/trending/${mediaType}/day?api_key=b3e706c7ed2ac18bd470888caaece32e`)
-  //   console.log(data.results);
-  //   setFunc(data.results)
-  // }
-  // useEffect(() => {
-  //   getData('movie',setMovieContainer)
-  //   }, [])
 let {movieContainer,pagination,loading}=useContext(mediaContext)
-// let {pageLsit}=useContext(paginationContext)
   return (
 <>
 <Offline><Disconnect/></Offline>
@@ -40,9 +27,7 @@ let {movieContainer,pagination,loading}=useContext(mediaContext)
         </div> 
         )}
 </div></div>
- {/*  */}
 
-{/*  */}
 <div className='d-flex justify-content-center m-auto mb-4 mt-3'>
     <Pagination count={100} color="secondary" onChange={pagination}/>
 </div>

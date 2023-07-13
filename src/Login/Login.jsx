@@ -2,7 +2,6 @@ import axios from 'axios'
 import Joi from 'joi'
 import React, { useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
-
 export default function Login({setIsLogin}) {
   const [user,setuser]=useState({
     email:'',
@@ -11,13 +10,11 @@ export default function Login({setIsLogin}) {
   const [errorMsg,setErrorMsg]=useState('')
   const [errorDetails,setErrorDetails]=useState([])
   let [isLoading,setIsLoading]=useState(false)
-
   const navigate=useNavigate()
   let getInputValue=(e)=>{
     let myUser={...user}
     myUser[e.target.name]=e.target.value
     setuser(myUser)
-    console.log(myUser);
   }
   let submitData=async(e)=>{
     e.preventDefault();
@@ -26,11 +23,9 @@ export default function Login({setIsLogin}) {
     setIsLoading(true)
    let validationResponse= validation()
     if(validationResponse.error === undefined){
-      let{data}=await axios.post(`https://sticky-note-fe.vercel.app/signin`,user)
+      let{data}=await axios.post(`https://movies-api.routemisr.com/signin`,user)
       setIsLoading(false)
-      console.log(data);
       if(data.message==='success'){
-        console.log("success");
         localStorage.setItem('token',data.token)
         setIsLogin(true)
      navigate('/')
@@ -48,7 +43,7 @@ export default function Login({setIsLogin}) {
     const rules=Joi.object({
       email:Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-      password:Joi.string().required().pattern(new RegExp(/^[a-z][0-9]{3}$/)),
+      password:Joi.string().required().pattern(new RegExp(/^[a-z][0-9]{5}$/)),
       
     })
 return rules.validate(user,{abortEarly:false})
@@ -56,7 +51,6 @@ return rules.validate(user,{abortEarly:false})
   }
 let showErrors=(inputName)=>{
   let errors=errorDetails.filter((err)=>{return err.message.includes(inputName)})
-  console.log(errors);
   if (errors[0]!==undefined) {
     return <div className='alert alert-danger'>{errors[0].message}</div>
   }

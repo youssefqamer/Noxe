@@ -2,7 +2,6 @@ import axios from 'axios'
 import Joi from 'joi'
 import React, { useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
-
 export default function Register() {
   const [user,setuser]=useState({
     first_name:'',
@@ -28,7 +27,7 @@ export default function Register() {
     setIsLoading(true)
    let validationResponse= validation()
     if(validationResponse.error === undefined){
-      let{data}=await axios.post(`https://sticky-note-fe.vercel.app/signup`,user)
+      let{data}=await axios.post(`https://movies-api.routemisr.com/signup`,user)
       setIsLoading(false)
       if(data.message==='success'){
         navigate('/login')
@@ -37,33 +36,26 @@ export default function Register() {
     }
      }else{
       setErrorDetails(validationResponse.error.details)
-    
       }
-      
-
 }
 
   let validation=()=>{
-    const rules=Joi.object({
-      first_name:Joi.string().alphanum().min(2).max(8).required(),
-      last_name:Joi.string().alphanum().min(2).max(10).required(),
-      age:Joi.number().required().min(20).max(80),
-      email:Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-      password:Joi.string().required().pattern(new RegExp(/^[a-z A-Z][0-9]{3}$/)),
-      
+    const schema=Joi.object({
+      first_name:Joi.string().alphanum().required().min(2).max(10),
+      last_name:Joi.string().alphanum().required().min(2).max(10),
+      email:Joi.string().required().email({tlds:{allow:['com','net']}}),
+      age:Joi.number().min(16).max(100).required(),
+      password:Joi.string().min(6).max(15).required().pattern(new RegExp(/([a-z]|[A-Z])/))
     })
-return rules.validate(user,{abortEarly:false})
+return schema.validate(user,{abortEarly:false})
     
   }
 
 let showErrors=(inputName)=>{
   let errors=errorDetails.filter((err)=>{return err.message.includes(inputName)})
-  console.log(errors);
 if (errors[0]!==undefined&&errors[0].message.includes('password')) {
-  return <div className='alert alert-danger py-1'>Password must be start with letter then 3 numbers</div>
-}
-else if(errors[0]!==undefined){
+  return <div className='alert alert-danger py-1'>Password must  start with letter then 5 numbers</div>
+}else if(errors[0]!==undefined){
    return <div className='alert alert-danger py-1'>{errors[0].message}</div>
 }
 }
@@ -74,18 +66,18 @@ else if(errors[0]!==undefined){
     {errorMsg ?<div className='alert alert-danger p-2 '>{errorMsg}</div>:''}
     <form onSubmit={submitData}>
     <div className="input-data my-2">
-    <label htmlFor="first_name">Farst Name:</label>
+    <label htmlFor="first_name">First-name:</label>
     <input onChange={getInputValue} type="text" className='form-control my-2' name='first_name' />
     {errorDetails.length>0?showErrors('first_name'):''}
     </div>
     <div className="input-data my-2">
-    <label htmlFor="last_name">Last Name:</label>
+    <label htmlFor="last-name">Last-name:</label>
     <input onChange={getInputValue} type="text" className='form-control my-2' name='last_name' />
     {errorDetails.length>0?showErrors('last_name'):''}
     </div>
     <div className="input-data my-2">
-    <label htmlFor="Age">Age:</label>
-    <input onChange={getInputValue} type="number" className='form-control my-2' name='age' />
+    <label htmlFor="age">Age:</label>
+    <input onChange={getInputValue} type="text" className='form-control my-2' name='age' />
     {errorDetails.length>0?showErrors('age'):''}
     </div>
     <div className="input-data my-2">
